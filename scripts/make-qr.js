@@ -3,7 +3,7 @@
 const qrcode = require("qrcode");
 const url = process.argv[2] || "https://vidiosa.com";
 qrcode
-  .toFile("assets/qr.svg", url, {
+  .toFile("public/deck/assets/qr.svg", url, {
     type: "svg",
     margin: 1,
     width: 600,

@@ -1,16 +1,20 @@
 {
   "name": "vidio-keynote",
   "version": "1.0.0",
-  "description": "Building a Scalable Sales Process \u2014 VID I/O Summit keynote deck",
+  "private": true,
+  "description": "Building a Scalable Sales Process — VID I/O Summit keynote (Next.js)",
   "scripts": {
-    "start": "python3 scripts/serve.py",
-    "dev": "python3 scripts/serve.py",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "qr": "node scripts/make-qr.js"
   },
   "dependencies": {
-    "gsap": "^3.15.0",
-    "qrcode": "^1.5.4",
-    "reveal.js": "^5.2.1",
-    "three": "^0.184.0"
+    "next": "14.2.15",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4"
   }
 }

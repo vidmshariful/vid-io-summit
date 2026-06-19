@@ -1,19 +1,27 @@
 # VID I/O Keynote — Building a Scalable Sales Process
 
-A web-based, Google I/O–style keynote deck. 39 slides, dark cinematic canvas with light CRM
-mockups, smooth auto-animate morphs and GSAP motion. Built with reveal.js + GSAP.
-Everything (engine, fonts) is vendored locally, so it runs with **no internet** on stage.
+A web-based, Google I/O–style keynote (reveal.js + GSAP), wrapped in a **Next.js** app so it
+deploys cleanly on Vercel. The slide deck itself is a self-contained static site under
+`public/deck/`; reveal.js, GSAP and the fonts are **vendored** (under `public/deck/vendor/` and
+`public/deck/fonts/`) so it needs **no internet** on stage and never relies on `node_modules` at runtime.
 
-## Run it
+## Project layout
+- `public/deck/` — **the deck** (edit here): `index.html`, `css/`, `js/`, `fonts/`, `assets/`, `vendor/`.
+- `app/`, `next.config.js` — the Next.js wrapper. `/` redirects to `/deck/index.html`.
 
+## Run it locally
 ```bash
-npm start
+npm install
+npm run dev      # Next dev server
 ```
+Open **http://localhost:3000** (it redirects to the deck). Edit files in `public/deck/`.
 
-Then open **http://localhost:8000**.
+## Deploy to Vercel
+Push the repo to GitHub and import it in Vercel (it auto-detects Next.js — build `next build`,
+no extra config), or run `vercel` from the CLI. The deck is served at `/deck/index.html` and `/`
+redirects to it. Because the libraries are vendored under `public/`, nothing 404s on Vercel.
 
-(That's just `python3 -m http.server 8000`. You can also open `index.html` directly, but the
-local server is more reliable for the speaker-notes window.)
+To regenerate the QR after deploy: `npm run qr -- "https://your-link"` (writes `public/deck/assets/qr.svg`).
 
 ## Presenting
 
