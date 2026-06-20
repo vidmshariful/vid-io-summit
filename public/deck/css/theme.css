@@ -156,6 +156,15 @@ body.theme-dark .reveal-viewport::before{
 .reveal section.present .hl-underline::after{ transform:scaleX(1); }
 @media(prefers-reduced-motion:reduce){ .hl-underline::after{ transition:none; transform:scaleX(1); } }
 
+/* reframe (slide 4): strike-through draws across the wrong diagnosis */
+.hl-strike{ position:relative; color:var(--muted); display:inline-block; }
+.hl-strike::after{ content:""; position:absolute; left:0; right:0; top:54%; height:4px; border-radius:4px;
+  background:var(--rose); box-shadow:0 0 12px rgba(233,78,114,0.4);
+  transform:scaleX(0); transform-origin:left center;
+  transition:transform 0.55s cubic-bezier(.22,.61,.36,1) 0.5s; }
+.reveal section.present .hl-strike::after{ transform:scaleX(1); }
+@media(prefers-reduced-motion:reduce){ .hl-strike::after{ transition:none; transform:scaleX(1); } }
+
 /* slide-2 image: soft blue glow halo behind the card */
 .imgglow{ position:relative; }
 .imgglow::before{ content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
@@ -234,7 +243,24 @@ body.theme-dark .funnel .barrow{ filter:drop-shadow(0 12px 26px rgba(0,0,0,0.55)
 .chip{ border:1px solid var(--line-2); border-radius:999px; padding:11px 20px; background:var(--card-bg); box-shadow:var(--sh-soft);
   font-family:var(--mono); font-size:14px; letter-spacing:0.03em; color:var(--white); }
 .chip span{ color:var(--blue); margin-right:9px; font-weight:700; }
-.frames{ display:flex; gap:22px; margin-top:44px; }
+.frames{ display:flex; gap:26px; margin-top:44px; align-items:flex-end; }
+
+/* slide 6 meme card */
+.memecard{ max-width:520px; border-radius:18px; overflow:hidden; border:1px solid var(--line-2);
+  box-shadow:var(--sh-card), 0 0 60px rgba(47,107,255,0.16); background:var(--card-bg); line-height:0; }
+.memecard img{ width:100%; height:auto; display:block; }
+
+/* slide 7 — journey media that grows in size (home office -> office -> studio video) */
+.mframe{ margin:0; border-radius:16px; overflow:hidden; position:relative;
+  border:1px solid var(--line-2); background:var(--card-bg); box-shadow:var(--sh-card); flex:none; line-height:0; }
+.mframe img, .mframe wistia-player{ display:block; width:100%; height:100%; object-fit:cover; }
+.mframe figcaption{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:18px 12px 9px;
+  font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#EFF3FF; line-height:1.2;
+  background:linear-gradient(transparent, rgba(7,12,28,0.7)); }
+.mframe.sm{ width:188px; aspect-ratio:4/3; }
+.mframe.md{ width:286px; aspect-ratio:4/3; }
+.mframe.lg{ width:470px; aspect-ratio:16/9; box-shadow:var(--sh-card), 0 0 60px rgba(47,107,255,0.18); }
+.mframe.lg figcaption{ background:linear-gradient(transparent, rgba(7,12,28,0.55)); }
 .frame{ flex:1; aspect-ratio:4/3; border-radius:18px; overflow:hidden; position:relative;
   border:1px solid var(--line-2); background:var(--card-bg); box-shadow:var(--sh-card);
   display:flex; align-items:flex-end; padding:18px; }

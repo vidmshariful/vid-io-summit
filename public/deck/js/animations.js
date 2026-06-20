@@ -179,17 +179,19 @@ function animateSlide(slide) {
     const els = q(slide, sel);
     if (els.length) tl.from(els, { duration: 0.45, stagger: stagger, ...vars }, at);
   };
+  // grid cards: slide-in only (no opacity fade) so they can never get stuck
+  // transparent if the timeline is interrupted (e.g. tab unfocused on screenshot).
   stg(".schip", { y: 10, opacity: 0 }, 0.1, 0.05);
-  stg(".job", { y: 20, opacity: 0 }, 0.2, 0.08);
-  stg(".teach .row", { x: 16, opacity: 0 }, 0.32, 0.12);
-  stg(".tcard", { y: 22, opacity: 0 }, 0.2, 0.12);
-  stg(".lc", { y: 16, opacity: 0, scale: 0.97 }, 0.2, 0.045);
-  stg(".pcol", { y: 16, opacity: 0 }, 0.2, 0.055);
-  stg(".wfn", { y: 16, opacity: 0 }, 0.2, 0.08);
+  stg(".job", { y: 18 }, 0.12, 0.06);
+  stg(".teach .row", { x: 16, opacity: 0 }, 0.3, 0.12);
+  stg(".tcard", { y: 16 }, 0.12, 0.1);
+  stg(".lc", { y: 14 }, 0.12, 0.04);
+  stg(".pcol", { y: 14 }, 0.12, 0.05);
+  stg(".wfn", { y: 14 }, 0.12, 0.06);
   stg(".wfc", { opacity: 0, scale: 0.6 }, 0.34, 0.08);
-  stg(".sysc", { y: 18, opacity: 0 }, 0.2, 0.07);
-  stg(".wli", { y: 12, opacity: 0 }, 0.18, 0.04);
-  stg(".stat", { y: 16, opacity: 0 }, 0.2, 0.05);
+  stg(".sysc", { y: 14 }, 0.12, 0.06);
+  stg(".wli", { y: 10 }, 0.1, 0.04);
+  stg(".stat", { y: 14 }, 0.12, 0.05);
   stg(".scrnote, .mcap", { opacity: 0, y: 8 }, 0.6, 0);
   /* reveal slide */
   const pills2 = q(slide, ".pill2");
